@@ -18,6 +18,7 @@ class AlertBoxMutation
 
     public function __construct()
     {
+        //@todo : get channel id from auth token
         $this->channelId = 13;
     }
 
