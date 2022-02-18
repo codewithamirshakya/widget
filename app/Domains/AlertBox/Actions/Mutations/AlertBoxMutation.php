@@ -14,11 +14,11 @@ class AlertBoxMutation
     /**
      * @var int
      */
-    private $id;
+    private $channelId;
 
     public function __construct()
     {
-        $this->id = 13;
+        $this->channelId = 13;
     }
 
     /**
@@ -34,8 +34,9 @@ class AlertBoxMutation
         // validation
         request()->request->add($args);
         $validation = new UpdateAlertBoxFollowSetting(request());
+
         $alertBoxSettingService = new AlertBoxSettingService();
-        return $alertBoxSettingService->updateAlertBox($this->id, $args, new AlertBoxFollowSettingService());
+        return $alertBoxSettingService->updateAlertBox($this->channelId, $args, new AlertBoxFollowSettingService());
     }
 
     /**
@@ -48,7 +49,7 @@ class AlertBoxMutation
     public function updateAlertBoxSubscriptionSetting($_, array $args): array
     {
         $alertBoxSettingService = new AlertBoxSettingService();
-        return $alertBoxSettingService->updateAlertBox($this->id, $args, new AlertBoxSubscriptionSettingService());
+        return $alertBoxSettingService->updateAlertBox($this->channelId, $args, new AlertBoxSubscriptionSettingService());
     }
 
     /**
@@ -61,6 +62,6 @@ class AlertBoxMutation
     public function updateAlertBoxTippingSetting($_, array $args): array
     {
         $alertBoxSettingService = new AlertBoxSettingService();
-        return $alertBoxSettingService->updateAlertBox($this->id, $args, new AlertBoxTippingSettingService());
+        return $alertBoxSettingService->updateAlertBox($this->channelId, $args, new AlertBoxTippingSettingService());
     }
 }
