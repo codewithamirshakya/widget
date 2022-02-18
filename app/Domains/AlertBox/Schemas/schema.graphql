@@ -1,0 +1,118 @@
+type AlertBoxSetting {
+    follow_enable:Boolean
+    follow_message_format: String
+    follow_text_animation: String
+    follow_sound_volume: Int
+    follow_alert_duration: Int
+
+    subscription_enable:Boolean
+    subscription_message_format: String
+    subscription_text_animation: String
+    subscription_sound_volume: Int
+    subscription_alert_duration: Int
+
+    tipping_enable:Boolean
+    tipping_min_amount_alert: Float
+    tipping_message_format: String
+    tipping_text_animation: String
+    tipping_sound_volume: Int
+    tipping_alert_duration: Int
+
+    tipping_tts_enable: Boolean
+    tipping_tts_voice: String
+    tipping_tts_lang: String
+    tipping_tts_volume: Int
+
+    tipping_image_id:Int
+    tipping_sound_id:Int
+
+    follow_image_id:Int
+    follow_sound_id:Int
+
+    subscription_image_id:Int
+    subscription_sound_id:Int
+
+    follow_font:String
+    follow_font_size:Int
+    follow_font_weight:Int
+    follow_text_color:String
+    follow_text_highlight_color:String
+
+    subscription_font:String
+    subscription_font_size:Int
+    subscription_font_weight:Int
+    subscription_text_color:String
+    subscription_text_highlight_color:String
+
+    tipping_font:String
+    tipping_font_size:Int
+    tipping_font_weight:Int
+    tipping_text_color:String
+    tipping_text_highlight_color:String
+}
+
+
+input UpdateFollowSettingInput {
+    follow_message_format: String
+    follow_text_animation: String
+    follow_sound_volume: Int
+    follow_alert_duration: Int
+    follow_enable:Boolean
+    follow_image_id:Int
+    follow_sound_id:Int
+    follow_font:String
+    follow_font_size:Int
+    follow_font_weight:Int
+    follow_text_color:String
+    follow_text_highlight_color:String
+}
+
+input UpdateSubscriptionSettingInput {
+    subscription_message_format: String
+    subscription_text_animation: String
+    subscription_sound_volume: Int
+    subscription_alert_duration: Int
+    subscription_enable:Boolean
+    subscription_image_id:Int
+    subscription_sound_id:Int
+    subscription_font:String
+    subscription_font_size:Int
+    subscription_font_weight:Int
+    subscription_text_color:String
+    subscription_text_highlight_color:String
+}
+
+input UpdateTippingSettingInput {
+    tipping_min_amount_alert: Float
+    tipping_message_format: String
+    tipping_text_animation: String
+    tipping_sound_volume: Int
+    tipping_alert_duration: Int
+    tipping_enable:Boolean
+    tipping_tts_enable:Boolean
+    tipping_tts_voice:String
+    tipping_tts_lang: String
+    tipping_tts_volume:Int
+    tipping_image_id:Int
+    tipping_sound_id:Int
+    tipping_font:String
+    tipping_font_size:Int
+    tipping_font_weight:Int
+    tipping_text_color:String
+    tipping_text_highlight_color:String
+}
+
+type GenericResponse {
+    status: Boolean
+    message: String
+}
+
+extend type Query {
+    AlertBoxSettings: [AlertBoxSetting] @all
+}
+
+extend type Mutation {
+    updateAlertBoxFollowSetting(input: UpdateFollowSettingInput @spread): GenericResponse! @authGuard @field(resolver: "App\\Domains\\AlertBox\\Actions\\Mutations\\AlertBoxMutation@updateAlertBoxFollowSetting")
+    updateAlertBoxSubscriptionSetting(input: UpdateSubscriptionSettingInput @spread): GenericResponse! @authGuard @field(resolver: "App\\Domains\\AlertBox\\Actions\\Mutations\\AlertBoxMutation@updateAlertBoxSubscriptionSetting")
+    updateAlertBoxTippingSetting(input: UpdateTippingSettingInput @spread): GenericResponse! @authGuard @field(resolver: "App\\Domains\\AlertBox\\Actions\\Mutations\\AlertBoxMutation@updateAlertBoxTippingSetting")
+}
