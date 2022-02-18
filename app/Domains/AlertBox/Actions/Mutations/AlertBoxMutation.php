@@ -7,6 +7,7 @@ use App\Domains\AlertBox\Services\AlertBoxFollowSettingService;
 use App\Domains\AlertBox\Services\AlertBoxSettingService;
 use App\Domains\AlertBox\Services\AlertBoxSubscriptionSettingService;
 use App\Domains\AlertBox\Services\AlertBoxTippingSettingService;
+use Illuminate\Validation\ValidationException;
 
 class AlertBoxMutation
 {
@@ -28,7 +29,7 @@ class AlertBoxMutation
      * @param mixed $_
      * @param mixed $args
      * @return array
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function updateAlertBoxFollowSetting($_, array $args): array
     {
