@@ -2,7 +2,8 @@
 
 namespace App\Domains\AlertBox\Actions\Mutations;
 
-use App\Domains\AlertBox\Requests\UpdateAlertBoxFollowSetting;
+use App\Domains\AlertBox\Requests\UpdateAlertBoxSubscriptionSetting;
+use App\Domains\AlertBox\Requests\UpdateAlertBoxTippingSetting;
 use App\Domains\AlertBox\Services\AlertBoxFollowSettingService;
 use App\Domains\AlertBox\Services\AlertBoxSettingService;
 use App\Domains\AlertBox\Services\AlertBoxSubscriptionSettingService;
@@ -35,7 +36,7 @@ class AlertBoxMutation
     {
         // validation
         request()->request->add($args);
-        $validation = new UpdateAlertBoxFollowSetting(request());
+        $validation = new UpdateAlertBoxTippingSetting(request());
 
         $alertBoxSettingService = new AlertBoxSettingService();
         return $alertBoxSettingService->updateAlertBox($this->channelId, $args, new AlertBoxFollowSettingService());
@@ -47,9 +48,14 @@ class AlertBoxMutation
      * @param mixed $_
      * @param mixed $args
      * @return array
+     * @throws ValidationException
      */
     public function updateAlertBoxSubscriptionSetting($_, array $args): array
     {
+        // validation
+        request()->request->add($args);
+        $validation = new UpdateAlertBoxSubscriptionSetting(request());
+
         $alertBoxSettingService = new AlertBoxSettingService();
         return $alertBoxSettingService->updateAlertBox($this->channelId, $args, new AlertBoxSubscriptionSettingService());
     }
@@ -60,9 +66,14 @@ class AlertBoxMutation
      * @param mixed $_
      * @param mixed $args
      * @return array
+     * @throws ValidationException
      */
     public function updateAlertBoxTippingSetting($_, array $args): array
     {
+        // validation
+        request()->request->add($args);
+        $validation = new UpdateAlertBoxTippingSetting(request());
+
         $alertBoxSettingService = new AlertBoxSettingService();
         return $alertBoxSettingService->updateAlertBox($this->channelId, $args, new AlertBoxTippingSettingService());
     }
