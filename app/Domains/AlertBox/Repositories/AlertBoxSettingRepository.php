@@ -37,8 +37,7 @@ class AlertBoxSettingRepository extends BaseRepository
      */
     public function update($id, $params)
     {
-        $model = $this->find($id);
-        return $model->update($params);
+        return $this->find($id)->update($params);
     }
 
     /**
@@ -48,8 +47,7 @@ class AlertBoxSettingRepository extends BaseRepository
      */
     public function updateByChannelId($channelId, $params)
     {
-        $model = $this->findByChannelId($channelId);
-        return $model->update($params);
+        return $this->findByChannelId($channelId)->update($params);
     }
 
 }

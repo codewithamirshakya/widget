@@ -1,0 +1,25 @@
+{
+    "name": "amir-shakya/minio",
+    "description": "Minio",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Amir Shakya",
+            "email": "amirmessi2010@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "AmirShakya\\Minio\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AmirShakya\\Minio\\MinioPackageServiceProvider"
+            ]
+        }
+    }
+}

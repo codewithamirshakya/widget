@@ -4,7 +4,7 @@ namespace App\Domains\AlertBox\Services;
 
 use App\Domains\AlertBox\Repositories\AlertBoxSettingRepository;
 
-class AlertBoxTippingSettingService implements AlertBoxSettingServiceInterface
+class AlertBoxTippingSettingService
 {
 
     /**
@@ -22,8 +22,8 @@ class AlertBoxTippingSettingService implements AlertBoxSettingServiceInterface
      * @param $input
      * @return mixed
      */
-    public function updateAlertBox($id, $input)
+    public function update($id, $input)
     {
-        return $this->alertBoxSettingRepository->updateByChannelId($id, $input);;
+        return $this->alertBoxSettingRepository->updateByChannelId($id, $input);
     }
 }

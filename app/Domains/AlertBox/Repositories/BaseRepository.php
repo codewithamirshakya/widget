@@ -13,4 +13,6 @@ abstract class BaseRepository
     abstract public function findByChannelId($channelId);
 
     abstract public function updateByChannelId($channelId, $params);
+
+    abstract public function create($params);
 }

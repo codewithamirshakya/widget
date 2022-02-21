@@ -13,13 +13,27 @@ class UpdateAlertBoxTippingSetting extends Controller
      */
     public function __construct(Request $request)
     {
-        $this->validate(
-            $request, $this->rules()
-        );
-
+        $this->validateRequest($request);
         parent::__construct($request);
     }
 
+    /**
+     * Validate request
+     *
+     * @throws ValidationException
+     */
+    public function validateRequest($request)
+    {
+        $this->validate(
+            $request, $this->rules()
+        );
+    }
+
+    /**
+     * Define rules
+     *
+     * @return \string[][]
+     */
     public function rules(): array
     {
         return [
