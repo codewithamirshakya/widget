@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
-class UpdateAlertBoxTippingSetting extends Controller
+class UpdateAlertBoxTippingSettingRequest extends Controller
 {
     /**
      * @throws ValidationException

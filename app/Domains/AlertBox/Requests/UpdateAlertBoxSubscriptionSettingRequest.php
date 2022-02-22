@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
-class UpdateAlertBoxSubscriptionSetting extends Controller
+class UpdateAlertBoxSubscriptionSettingRequest extends Controller
 {
     /**
      * @throws ValidationException

@@ -6,14 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
-class UpdateAlertBoxFollowSetting extends Controller
+class UploadImageGalleryRequest extends Controller
 {
     /**
      * @throws ValidationException
      */
-    public function __construct(Request $request)
+    public function __construct(Request $request, $args)
     {
-        $this->validateRequest($request);
+        $this->validateRequest($request, $args);
         parent::__construct($request);
     }
 
@@ -22,8 +22,9 @@ class UpdateAlertBoxFollowSetting extends Controller
      *
      * @throws ValidationException
      */
-    public function validateRequest($request)
+    public function validateRequest($request, $args)
     {
+        $request->request->add($args);
         $this->validate(
             $request, $this->rules()
         );
@@ -37,8 +38,7 @@ class UpdateAlertBoxFollowSetting extends Controller
     public function rules(): array
     {
         return [
-            'follow_sound_volume'      => ['numeric'],
-            'follow_alert_duration'    => ['numeric']
+            'file' => ['required', 'max:1024']
         ];
     }
 }

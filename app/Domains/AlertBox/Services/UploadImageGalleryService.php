@@ -4,19 +4,18 @@ namespace App\Domains\AlertBox\Services;
 
 use AmirShakya\Minio\Support\Minio;
 use App\Domains\AlertBox\Repositories\ImageGalleryRepository;
-use App\Domains\AlertBox\Repositories\SoundGalleryRepository;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 
-class UploadSoundGalleryService
+class UploadImageGalleryService
 {
     /**
-     * @var SoundGalleryRepository
+     * @var ImageGalleryRepository
      */
-    private $soundGalleryRepository;
+    private $imageGalleryRepository;
 
     public function __construct()
     {
-        $this->soundGalleryRepository = new SoundGalleryRepository();
+        $this->imageGalleryRepository = new ImageGalleryRepository();
     }
 
     /**
@@ -28,7 +27,7 @@ class UploadSoundGalleryService
      */
     private function uploadFile($file, $id): array
     {
-        $path = substr($id, 0, 1) . DIRECTORY_SEPARATOR . substr($id, 0, 2) . DIRECTORY_SEPARATOR . $id . DIRECTORY_SEPARATOR . config('minio.buckets.asounds');
+        $path = substr($id, 0, 1) . DIRECTORY_SEPARATOR . substr($id, 0, 2) . DIRECTORY_SEPARATOR . $id . DIRECTORY_SEPARATOR . config('minio.buckets.aimages');
         return (new Minio())->setBaseUrl(config('minio.url'))
             ->setFile($file)
             ->setAttribute('image')
@@ -39,13 +38,6 @@ class UploadSoundGalleryService
             ->upload();
     }
 
-    /**
-     * Upload sound
-     *
-     * @param $args
-     * @param $id
-     * @return bool
-     */
     public function upload($args, $id): bool
     {
         try {
@@ -60,7 +52,7 @@ class UploadSoundGalleryService
                 'original_name'     => $file->getClientOriginalName(),
             ];
 
-            return $this->soundGalleryRepository->create($params);
+            return $this->imageGalleryRepository->create($params);
 
         } catch (BadRequestException $badRequestException) {
             return false;

@@ -2,8 +2,8 @@
 
 namespace App\Domains\AlertBox\Actions\Mutations;
 
-use App\Domains\AlertBox\Requests\UpdateAlertBoxSubscriptionSetting;
-use App\Domains\AlertBox\Requests\UpdateAlertBoxTippingSetting;
+use App\Domains\AlertBox\Requests\UpdateAlertBoxSubscriptionSettingRequest;
+use App\Domains\AlertBox\Requests\UpdateAlertBoxTippingSettingRequest;
 use App\Domains\AlertBox\Services\AlertBoxFollowSettingService;
 use App\Domains\AlertBox\Services\AlertBoxSubscriptionSettingService;
 use App\Domains\AlertBox\Services\AlertBoxTippingSettingService;
@@ -36,7 +36,7 @@ class AlertBoxMutation
     {
         // validation
         request()->request->add($args);
-        $validation = new UpdateAlertBoxTippingSetting(request());
+        $validation = new UpdateAlertBoxTippingSettingRequest(request());
 
         $alertBoxFollowSettingService = new AlertBoxFollowSettingService();
         $status = $alertBoxFollowSettingService->update($this->channelId, $args);
@@ -56,7 +56,7 @@ class AlertBoxMutation
     {
         // validation
         request()->request->add($args);
-        $validation = new UpdateAlertBoxSubscriptionSetting(request());
+        $validation = new UpdateAlertBoxSubscriptionSettingRequest(request());
 
         $alertBoxSubscriptionSettingService = new AlertBoxSubscriptionSettingService();
         $status = $alertBoxSubscriptionSettingService->update($this->channelId, $args);
@@ -77,7 +77,7 @@ class AlertBoxMutation
     {
         // validation
         request()->request->add($args);
-        $validation = new UpdateAlertBoxTippingSetting(request());
+        $validation = new UpdateAlertBoxTippingSettingRequest(request());
 
         $alertBoxTippingSettingService = new AlertBoxTippingSettingService();
         return $alertBoxTippingSettingService->update($this->channelId, $args);

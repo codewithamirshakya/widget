@@ -9,7 +9,7 @@ use App\Domains\AlertBox\Services\UploadImageGalleryService;
 use App\Http\Resources\GenericResource;
 use Illuminate\Validation\ValidationException;
 
-class SoundUploadMutation
+class ImageUploadMutation
 {
     /**
      * @var int
@@ -28,10 +28,10 @@ class SoundUploadMutation
      */
     public function upload($_, array $args): GenericResource
     {
-        $uploadSoundGalleryService = new UploadImageGalleryService();
+        $uploadImageGalleryService = new UploadImageGalleryService();
         $validate = new UploadImageGalleryRequest(request(), $args);
 
-        $status = $uploadSoundGalleryService->upload($args['file'], $this->channelId);
+        $status = $uploadImageGalleryService->upload($args['file'], $this->channelId);
         return $status ? GenericResource::make(['status' => true, 'message' => 'success']) : GenericResource::make(['status' => false, 'message' => 'failed']);
     }
 }
