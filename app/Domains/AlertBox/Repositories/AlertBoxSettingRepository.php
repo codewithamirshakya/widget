@@ -3,6 +3,7 @@
 namespace App\Domains\AlertBox\Repositories;
 
 use App\Domains\AlertBox\Models\AlertBoxSetting;
+use App\Repositories\BaseRepository;
 
 class AlertBoxSettingRepository extends BaseRepository
 {
@@ -50,4 +51,8 @@ class AlertBoxSettingRepository extends BaseRepository
         return $this->findByChannelId($channelId)->update($params);
     }
 
+    public function create($params)
+    {
+        // TODO: Implement create() method.
+    }
 }

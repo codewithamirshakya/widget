@@ -3,6 +3,7 @@
 namespace App\Domains\AlertBox\Repositories;
 
 use App\Domains\AlertBox\Models\SoundGallery;
+use App\Repositories\BaseRepository;
 
 class SoundGalleryRepository extends BaseRepository
 {

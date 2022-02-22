@@ -3,7 +3,7 @@
 namespace App\Domains\AlertBox\Services;
 
 use AmirShakya\Minio\Support\Minio;
-use App\Domains\AlertBox\Repositories\ImageGalleryRepository;
+use App\Domains\AlertBox\Repositories\WidgetSettingRepository;
 use App\Domains\AlertBox\Repositories\SoundGalleryRepository;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 

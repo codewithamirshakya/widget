@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Domains\AlertBox\Repositories;
+namespace App\Domains\Widget\Repositories;
 
-use App\Domains\AlertBox\Models\SoundGallery;
+use App\Domains\Widget\Models\WidgetSetting;
 use App\Repositories\BaseRepository;
 
-class ImageGalleryRepository extends BaseRepository
+class WidgetSettingRepository extends BaseRepository
 {
     public function model(): object
     {
-        return new SoundGallery();
+        return new WidgetSetting();
     }
 
     /**
@@ -31,13 +31,19 @@ class ImageGalleryRepository extends BaseRepository
         // TODO: Implement update() method.
     }
 
+    /**
+     * Widget setting by channel id
+     *
+     * @param $channelId
+     * @return mixed
+     */
     public function findByChannelId($channelId)
     {
-        // TODO: Implement findByChannelId() method.
+        return $this->model()->where('channel_id',$channelId)->firstOrFail();
     }
 
     public function updateByChannelId($channelId, $params)
     {
-        // TODO: Implement updateByChannelId() method.
+        return $this->findByChannelId($channelId)->update($params);
     }
 }
