@@ -3,7 +3,9 @@ scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date
 scalar Upload @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Upload")
 
 #import Generic/*.graphql
+#import Channel/*.graphql
 #import AlertBox/*.graphql
+#import Widget/*.graphql
 
 type Query
 type Mutation

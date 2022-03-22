@@ -64,6 +64,7 @@ $app->singleton(
 $app->configure('app');
 $app->configure('lighthouse');
 $app->configure('minio');
+$app->configure('setting');
 
 /*
 |--------------------------------------------------------------------------
@@ -102,6 +103,8 @@ $app->register(\Nuwave\Lighthouse\LighthouseServiceProvider::class);
 $app->register(\Nuwave\Lighthouse\Pagination\PaginationServiceProvider::class);
 $app->register(\Nuwave\Lighthouse\Validation\ValidationServiceProvider::class);
 $app->register(GraphQLPlaygroundServiceProvider::class);
+$app->register(\Nuwave\Lighthouse\Federation\FederationServiceProvider::class);
+
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes

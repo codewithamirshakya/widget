@@ -1,0 +1,23 @@
+type WidgetSetting @key(fields: "channel_id"){
+    channel_id: Int
+    message_format: String
+    max_donation: Int
+    text_scroll_speed: Int
+    text_color: String
+    name_color: String
+    amount_color: String
+}
+
+input UpdateWidgetSettingInput {
+    message_format: String
+    max_donation: Int
+    text_scroll_speed: Int
+    text_color: String
+    name_color: String
+    amount_color: String
+}
+
+extend type Mutation {
+    updateWidgetSetting(input: UpdateFollowSettingInput @spread): Response! @authGuard @field(resolver: "App\\Domains\\Widget\\Actions\\Mutations\\WidgetMutation@updateWidgetSetting")
+}
+

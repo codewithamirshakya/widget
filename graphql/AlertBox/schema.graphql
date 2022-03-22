@@ -111,7 +111,7 @@ extend type Query {
 }
 
 extend type Mutation {
-    updateAlertBoxFollowSetting(input: UpdateFollowSettingInput @spread): GenericResponse! @authGuard @field(resolver: "App\\Domains\\AlertBox\\Actions\\Mutations\\AlertBoxMutation@updateAlertBoxFollowSetting")
-    updateAlertBoxSubscriptionSetting(input: UpdateSubscriptionSettingInput @spread): GenericResponse! @authGuard @field(resolver: "App\\Domains\\AlertBox\\Actions\\Mutations\\AlertBoxMutation@updateAlertBoxSubscriptionSetting")
-    updateAlertBoxTippingSetting(input: UpdateTippingSettingInput @spread): GenericResponse! @authGuard @field(resolver: "App\\Domains\\AlertBox\\Actions\\Mutations\\AlertBoxMutation@updateAlertBoxTippingSetting")
-    uploadSound(input: UploadSound @spread): GenericResponse! @authGuard  @field(resolver: "App\\Domains\\AlertBox\\Actions\\Mutations\\SoundUploadMutation@upload")}
+    updateAlertBoxFollowSetting(input: UpdateFollowSettingInput @spread): Response! @authGuard @field(resolver: "App\\Domains\\AlertBox\\Actions\\Mutations\\AlertBoxMutation@updateAlertBoxFollowSetting")
+    updateAlertBoxSubscriptionSetting(input: UpdateSubscriptionSettingInput @spread): Response! @authGuard @field(resolver: "App\\Domains\\AlertBox\\Actions\\Mutations\\AlertBoxMutation@updateAlertBoxSubscriptionSetting")
+    updateAlertBoxTippingSetting(input: UpdateTippingSettingInput @spread): Response! @authGuard @field(resolver: "App\\Domains\\AlertBox\\Actions\\Mutations\\AlertBoxMutation@updateAlertBoxTippingSetting")
+    uploadSound(input: UploadSound @spread): Response! @authGuard  @field(resolver: "App\\Domains\\AlertBox\\Actions\\Mutations\\SoundUploadMutation@upload")}

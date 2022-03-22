@@ -1,0 +1,5 @@
+type Channel @key(fields: "id") @extends{
+    id: ID! @external
+    widget_setting: WidgetSetting
+    alert_box_setting: AlertBoxSetting
+}

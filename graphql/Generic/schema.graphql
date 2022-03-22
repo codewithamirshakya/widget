@@ -1,4 +1,4 @@
-type GenericResponse {
-    status: Boolean
+type Response {
+    status: String!
     message: String
 }
